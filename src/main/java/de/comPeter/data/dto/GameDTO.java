@@ -2,6 +2,8 @@ package de.comPeter.data.dto;
 
 
 
+import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +14,9 @@ import javax.persistence.Id;
  */
 public class GameDTO {
 
-    private long id;
+    @Getter private long id;
 
-    private String name;
+    @Getter private String name;
 
     public GameDTO(long id, String name) {
         this.name=name;

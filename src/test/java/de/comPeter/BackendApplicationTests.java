@@ -1,10 +1,9 @@
 package de.comPeter;
 
 import de.comPeter.controller.MatchController;
-import de.comPeter.data.entity.Console;
-import de.comPeter.data.entity.Game;
-import de.comPeter.data.entity.Location;
-import de.comPeter.data.entity.Match;
+import de.comPeter.data.entity.*;
+import de.comPeter.data.entity.builder.GameBuilderImpl;
+import de.comPeter.data.entity.builder.MatchBuilderImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class BackendApplicationTests {
 
 	@Test
 	public void testCreateMatch() {
-		matchController.createMatch(new Match(new Game(),new Console("ps4"),new Location("dinos")));
+		matchController.createMatch(new MatchBuilderImpl().setGame(new GameBuilderImpl().createGame()).setPlatform(new Platform("ps4")).setLocation(new Location("dinos")).createMatch());
 		Iterable<Match> matches = matchController.getAllMatches();
 		String s = "pups";
 	}

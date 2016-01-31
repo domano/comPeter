@@ -1,35 +1,28 @@
 package de.comPeter.data.dto;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import lombok.Getter;
 
 /**
  * Created by domano on 30.01.16.
  */
-@Entity
 public class MatchResultDTO {
 
-    @Id
-    @GeneratedValue
+    @Getter
     private long id;
 
-    @OneToOne
-    UserDTO userDTO;
+    Long user;
 
-    @OneToOne
-    MatchDTO matchDTO;
+    Long match;
 
     private Boolean win;
 
     protected MatchResultDTO() {
     }
 
-    public MatchResultDTO(final UserDTO userDTO, final MatchDTO matchDTO, final Boolean win) {
-        this.userDTO = userDTO;
-        this.matchDTO = matchDTO;
+    public MatchResultDTO(final Long user, final Long match, final Boolean win) {
+        this.user = user;
+        this.match= match;
         this.win = win;
     }
 }

@@ -10,7 +10,7 @@ import javax.persistence.Id;
  * Created by domano on 30.01.16.
  */
 @Entity
-public class Console {
+public class Platform {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,10 +18,10 @@ public class Console {
 
     private String name;
 
-    protected Console() {
+    protected Platform() {
     }
 
-    public Console(final String name) {
+    public Platform(final String name) {
         this.name = name;
     }
 }

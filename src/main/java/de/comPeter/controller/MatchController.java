@@ -24,7 +24,7 @@ public class MatchController {
         this.matchRepository = matchRepository;
     }
 
-    @RequestMapping(path = "/match", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/match/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createMatch(@RequestParam Match match) {
         matchRepository.save(match);
     }

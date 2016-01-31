@@ -1,6 +1,6 @@
 package de.comPeter.controller
 
-import de.comPeter.data.entity.Console
+import de.comPeter.data.entity.Platform
 import de.comPeter.data.entity.Game
 import de.comPeter.data.entity.Location
 import de.comPeter.data.entity.Match
@@ -17,7 +17,7 @@ class MatchControllerTest {
     MatchController matchController;
 
     void testCreateMatch() {
-        matchController.createMatch(new Match(new Game(),new Console("ps4"),new Location("dinos")));
+        matchController.createMatch(new Match(new Game(),new Platform("ps4"),new Location("dinos")));
         Iterable<Match> matches = matchController.getAllMatches();
         print(matches);
 

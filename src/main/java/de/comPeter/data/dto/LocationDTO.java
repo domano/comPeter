@@ -1,6 +1,8 @@
 package de.comPeter.data.dto;
 
 
+import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,11 +11,12 @@ import javax.persistence.Id;
 /**
  * Created by domano on 30.01.16.
  */
-@Entity
 public class LocationDTO {
 
+    @Getter
     private long id;
 
+    @Getter
     private String name;
 
     public LocationDTO(final long id, final String name) {

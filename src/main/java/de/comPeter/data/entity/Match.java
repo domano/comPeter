@@ -1,6 +1,8 @@
 package de.comPeter.data.entity;
 
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 /**
@@ -9,25 +11,29 @@ import javax.persistence.*;
 @Entity
 public class Match {
 
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Getter
     @OneToOne
     private Game game;
 
+    @Getter
     @OneToOne
-    private Console console;
+    private Platform platform;
 
+    @Getter
     @OneToOne
     private Location location;
 
     protected Match() {
     }
 
-    public Match(final Game game, final Console console, final Location location) {
+    public Match(final Game game, final Platform platform, final Location location) {
         this.game = game;
-        this.console = console;
+        this.platform = platform;
         this.location = location;
     }
 }
