@@ -1,26 +1,19 @@
 package de.comPeter.data.dto;
 
 
-
 import lombok.Getter;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * Created by domano on 30.01.16.
  */
-public class GameDTO {
+public class GameDTO extends AbstractDTO {
 
-    @Getter private long id;
+    @Getter
+    private final String name;
 
-    @Getter private String name;
-
-    public GameDTO(long id, String name) {
-        this.name=name;
-        this.id=id;
+    public GameDTO(final Long id, final String name) {
+        this.id = id;
+        this.name = name;
     }
 
 }

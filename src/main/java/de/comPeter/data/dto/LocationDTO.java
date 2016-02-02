@@ -3,23 +3,15 @@ package de.comPeter.data.dto;
 
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  * Created by domano on 30.01.16.
  */
-public class LocationDTO {
+public class LocationDTO extends AbstractDTO {
 
     @Getter
-    private long id;
+    private final String name;
 
-    @Getter
-    private String name;
-
-    public LocationDTO(final long id, final String name) {
+    public LocationDTO(final Long id, final String name) {
         this.name = name;
         this.id = id;
     }

@@ -1,5 +1,7 @@
 package de.comPeter.controller;
 
+import de.comPeter.data.conversion.MatchEntityDTOConverter;
+import de.comPeter.data.dto.MatchDTO;
 import de.comPeter.data.entity.Match;
 import de.comPeter.repository.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +19,23 @@ import javax.websocket.server.PathParam;
 @RestController
 public class MatchController {
 
-    private MatchRepository matchRepository;
+    private final MatchRepository matchRepository;
+
+    private final MatchEntityDTOConverter converter;
 
     @Autowired
-    public MatchController(MatchRepository matchRepository) {
+    public MatchController(final MatchRepository matchRepository, final MatchEntityDTOConverter converter) {
         this.matchRepository = matchRepository;
+        this.converter = converter;
     }
 
     @RequestMapping(path = "/match/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createMatch(@RequestParam Match match) {
-        matchRepository.save(match);
+    public void createMatch(@RequestParam final MatchDTO matchDTO) {
+        matchRepository.save(converter.dtoToEntity(matchDTO));
     }
 
     @RequestMapping(path = "/match/{id}", method = RequestMethod.GET)
-    public Match getMatch(@PathParam("id") Long id) {
+    public Match getMatch(@PathParam("id") final Long id) {
         return matchRepository.findOne(id);
     }
 

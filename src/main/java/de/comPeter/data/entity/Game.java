@@ -1,33 +1,26 @@
 package de.comPeter.data.entity;
 
 
-
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * Created by domano on 30.01.16.
  */
 @Entity
-public class Game {
+public class Game extends AbstractEntity {
 
     @Getter
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    @Getter
+    @Setter
     private String name;
 
     protected Game() {
 
     }
 
-    public Game(String name) {
+    public Game(final String name) {
         this.name = name;
     }
 

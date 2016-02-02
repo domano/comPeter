@@ -3,29 +3,32 @@ package de.comPeter.data.dto;
 
 import lombok.Getter;
 
-import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by domano on 30.01.16.
  */
-public class MatchDTO {
+public class MatchDTO extends AbstractDTO {
 
     @Getter
-    private Long id;
+    private final Long game;
 
     @Getter
-    private Long gameDTO;
+    private final Long platform;
 
     @Getter
-    private Long consoleDTO;
+    private final Long location;
 
     @Getter
-    private Long locationDTO;
+    private final Set<Long> matchResults;
 
-    public MatchDTO(final Long id, final Long gameDTO, final Long consoleDTO, final Long locationDTO) {
-        this.id=id;
-        this.gameDTO = gameDTO;
-        this.consoleDTO = consoleDTO;
-        this.locationDTO = locationDTO;
+
+    public MatchDTO(final Long id, final Long game, final Long platform, final Long location) {
+        this.id = id;
+        this.game = game;
+        this.platform = platform;
+        this.location = location;
+        this.matchResults = new HashSet<>();
     }
 }

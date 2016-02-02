@@ -4,24 +4,22 @@ package de.comPeter.data.dto;
 import lombok.Getter;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 
 /**
  * Created by domano on 30.01.16.
  */
 @Entity
-public class UserDTO {
+public class UserDTO extends AbstractDTO {
 
     @Getter
-    private long id;
+    private final String firstName;
 
-    private String firstName;
-    private String lastName;
+    @Getter
+    private final String lastName;
 
-    public UserDTO(final String firstName, final String lastName) {
+    public UserDTO(final Long id, final String firstName, final String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }

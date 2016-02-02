@@ -6,23 +6,17 @@ import lombok.Getter;
 /**
  * Created by domano on 30.01.16.
  */
-public class MatchResultDTO {
+public class MatchResultDTO extends AbstractDTO {
 
     @Getter
-    private long id;
+    private final Long user;
 
-    Long user;
+    @Getter
+    private final Boolean win;
 
-    Long match;
-
-    private Boolean win;
-
-    protected MatchResultDTO() {
-    }
-
-    public MatchResultDTO(final Long user, final Long match, final Boolean win) {
+    public MatchResultDTO(final Long id, final Long user, final Boolean win) {
+        this.id = id;
         this.user = user;
-        this.match= match;
         this.win = win;
     }
 }

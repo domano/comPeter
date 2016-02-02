@@ -1,35 +1,33 @@
 package de.comPeter.data.entity;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * Created by domano on 30.01.16.
  */
 @Entity
-public class MatchResult {
+public class MatchResult extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    private long id;
-
-    @OneToOne
+    @Getter
+    @Setter
+    @ManyToOne
     User user;
 
-    @OneToOne
-    Match match;
-
-    private Boolean win;
+    @Getter
+    @Setter
+    Boolean win;
 
     protected MatchResult() {
     }
 
-    public MatchResult(final User user, final Match match, final Boolean win) {
+    public MatchResult(final User user, final Boolean win) {
         this.user = user;
-        this.match = match;
-        this.win = win;
+        this.win= win;
     }
 }
