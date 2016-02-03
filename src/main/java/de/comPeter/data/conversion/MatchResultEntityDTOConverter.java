@@ -18,15 +18,16 @@ public class MatchResultEntityDTOConverter extends EntityDTOConverter<MatchResul
     public MatchResultEntityDTOConverter(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     @Override
-    protected MatchResult dtoToEntity(final MatchResultDTO matchResultDTO) {
+    public MatchResult dtoToEntity(final MatchResultDTO matchResultDTO) {
         MatchResult matchResult = new MatchResult(userRepository.findOne(matchResultDTO.getUser()), matchResultDTO.getWin());
         transferIdFromDtoToEntity(matchResultDTO, matchResult);
         return matchResult;
     }
 
     @Override
-    protected MatchResultDTO entityToDto(final MatchResult entity) {
+    public MatchResultDTO entityToDto(final MatchResult entity) {
         MatchResultDTO matchResultDTO = new MatchResultDTO(entity.getId(), entity.getUser().getId(), entity.getWin());
         return matchResultDTO;
     }

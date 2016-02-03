@@ -1,7 +1,10 @@
 package de.comPeter.data.dto;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 
@@ -9,13 +12,16 @@ import javax.persistence.Entity;
 /**
  * Created by domano on 30.01.16.
  */
-@Entity
+
+@RequiredArgsConstructor
 public class UserDTO extends AbstractDTO {
 
     @Getter
+    @NonNull
     private final String firstName;
 
     @Getter
+    @NonNull
     private final String lastName;
 
     public UserDTO(final Long id, final String firstName, final String lastName) {
