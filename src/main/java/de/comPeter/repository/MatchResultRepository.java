@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by domano on 31.01.16.
  */
-@Repository
 public interface MatchResultRepository extends CrudRepository<MatchResult, Long> {
     MatchResult findById(Long id);
 }

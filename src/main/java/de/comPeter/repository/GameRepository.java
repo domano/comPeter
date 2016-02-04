@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by domano on 31.01.16.
  */
-@Repository
 public interface GameRepository extends CrudRepository<Game, Long> {
 }

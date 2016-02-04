@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by domano on 30.01.16.
  */
-@Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 }
