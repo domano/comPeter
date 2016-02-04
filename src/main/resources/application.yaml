@@ -1,1 +1,9 @@
 
+
+server:
+  port: 1337
+
+security:
+  user:
+    name: user
+    password: user
