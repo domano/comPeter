@@ -1,16 +1,15 @@
 package de.comPeter.data.entity;
 
 
-import lombok.*;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.springframework.beans.factory.annotation.Required;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by domano on 30.01.16.
@@ -42,7 +41,7 @@ public class Match extends AbstractEntity {
     @Setter
     @OneToMany
     @NonNull
-    private Set<MatchResult> matchResults;
+    private List<MatchResult> matchResults;
 
     protected Match() {
     }

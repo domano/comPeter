@@ -9,8 +9,9 @@ import de.comPeter.repository.PlatformRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by domano on 02.02.16.
@@ -36,7 +37,7 @@ public class MatchEntityDTOConverter extends EntityDTOConverter<Match, MatchDTO>
         final Game game = gameRepository.findOne(matchDTO.getGame());
         final Platform platform = platformRepository.findOne(matchDTO.getPlatform());
         final Location location = locationRepository.findOne(matchDTO.getLocation());
-        final Set<MatchResult> matchResults = new HashSet<>();
+        final List<MatchResult> matchResults = new ArrayList<>();
         matchDTO.getMatchResults().forEach(id -> {
             matchResults.add(matchResultRepository.findById(id));
         });
@@ -47,7 +48,7 @@ public class MatchEntityDTOConverter extends EntityDTOConverter<Match, MatchDTO>
 
     @Override
     public MatchDTO entityToDto(final Match entity) {
-        Set<Long> matchResults = new HashSet<>();
+        List<Long> matchResults = new ArrayList<>();
         entity.getMatchResults().forEach(e -> {
             matchResults.add(e.getId());
         });

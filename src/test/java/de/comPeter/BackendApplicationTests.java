@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import de.comPeter.controller.*;
 import de.comPeter.data.dto.*;
 import de.comPeter.data.entity.*;
-import org.hibernate.metamodel.relational.Tuple;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = BackendApplication.class)
@@ -47,7 +45,7 @@ public class BackendApplicationTests {
         Location location = testLocationSaveAPI();
         MatchResult matchResult = testMatchResultSaveAPI();
 
-        Set<Long> matchResultSet = new HashSet<>();
+        List<Long> matchResultSet = new ArrayList<>();
         matchResultSet.add(matchResult.getId());
 
         MatchDTO matchDTO = new MatchDTO(game.getId(), platform.getId(), location.getId(), matchResultSet);
@@ -59,6 +57,7 @@ public class BackendApplicationTests {
         System.out.println("Game: "+match.getGame().getName());
         System.out.println("Location: "+match.getLocation().getName());
         System.out.println("Platform: "+match.getPlatform().getName());
+        match.getMatchResults().size();
         System.out.println("User: "+match.getMatchResults().toArray(new MatchResult[10])[0].getUser().getFirstName());
         System.out.println("Result: "+match.getMatchResults().toArray(new MatchResult[10])[0].getWin());
     }

@@ -1,12 +1,9 @@
 package de.comPeter.data.dto;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-
-import javax.persistence.Entity;
 
 
 /**

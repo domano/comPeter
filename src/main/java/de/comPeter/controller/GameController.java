@@ -4,7 +4,6 @@ import de.comPeter.data.conversion.GameEntityDTOConverter;
 import de.comPeter.data.dto.GameDTO;
 import de.comPeter.data.entity.Game;
 import de.comPeter.repository.GameRepository;
-import de.comPeter.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
