@@ -28,6 +28,12 @@ public class MatchResult extends AbstractEntity {
     @NonNull
     Boolean win;
 
+    @Getter
+    @Setter
+    @NonNull
+    @ManyToOne
+    Match match;
+
     protected MatchResult() {
     }
 

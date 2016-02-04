@@ -30,8 +30,8 @@ public class MatchController {
     }
 
     @RequestMapping(path = "/match/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createMatch(@RequestParam final MatchDTO matchDTO) {
-        matchRepository.save(converter.dtoToEntity(matchDTO));
+    public Match createMatch(@RequestParam final MatchDTO matchDTO) {
+        return matchRepository.save(converter.dtoToEntity(matchDTO));
     }
 
     @RequestMapping(path = "/match/{id}", method = RequestMethod.GET)

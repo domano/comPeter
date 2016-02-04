@@ -20,8 +20,12 @@ public class MatchResultDTO extends AbstractDTO {
     @NonNull
     private final Boolean win;
 
-    public MatchResultDTO(final Long id, final Long user, final Boolean win) {
-        this(user, win);
+    @Getter
+    @NonNull
+    private final Long match;
+
+    public MatchResultDTO(final Long id, final Long user, final Boolean win, final Long match) {
+        this(user, win, match);
         this.id = id;
     }
 }

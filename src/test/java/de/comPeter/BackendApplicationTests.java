@@ -2,8 +2,10 @@ package de.comPeter;
 
 import com.google.common.collect.Lists;
 import de.comPeter.controller.*;
+import de.comPeter.data.conversion.MatchEntityDTOConverter;
 import de.comPeter.data.dto.*;
 import de.comPeter.data.entity.*;
+import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,29 +39,31 @@ public class BackendApplicationTests {
     @Autowired
     MatchResultController matchResultController;
 
+    @Autowired
+    MatchEntityDTOConverter matchEntityDTOConverter;
+
+
     @Test
     public void testMatchSaveAPI() {
 
         Game game = testGameSaveAPI();
         Platform platform = testPlatformSaveAPI();
         Location location = testLocationSaveAPI();
-        MatchResult matchResult = testMatchResultSaveAPI();
 
-        List<Long> matchResultSet = new ArrayList<>();
-        matchResultSet.add(matchResult.getId());
 
-        MatchDTO matchDTO = new MatchDTO(game.getId(), platform.getId(), location.getId(), matchResultSet);
-        matchController.createMatch(matchDTO);
+        MatchDTO matchDTO = new MatchDTO(game.getId(), platform.getId(), location.getId());
+        Match match = matchController.createMatch(matchDTO);
+        matchDTO = matchEntityDTOConverter.entityToDto(match);
+        MatchResult matchResult = testMatchResultSaveAPI(matchDTO);
         List<Match> results = Lists.newArrayList(matchController.getAllMatches());
+        List<MatchResult> matchResults = Lists.newArrayList(matchResultController.getMatchResultsByMatch(matchDTO));
         assert results.size()==1;
 
-        Match match = results.get(0);
         System.out.println("Game: "+match.getGame().getName());
         System.out.println("Location: "+match.getLocation().getName());
         System.out.println("Platform: "+match.getPlatform().getName());
-        match.getMatchResults().size();
-        System.out.println("User: "+match.getMatchResults().toArray(new MatchResult[10])[0].getUser().getFirstName());
-        System.out.println("Result: "+match.getMatchResults().toArray(new MatchResult[10])[0].getWin());
+        System.out.println("User: "+matchResults.toArray(new MatchResult[10])[0].getUser().getFirstName());
+        System.out.println("Result: "+matchResults.toArray(new MatchResult[10])[0].getWin());
     }
 
     public Game testGameSaveAPI() {
@@ -94,9 +98,9 @@ public class BackendApplicationTests {
         return result.get(0);
     }
 
-    public MatchResult testMatchResultSaveAPI() {
+    public MatchResult testMatchResultSaveAPI(MatchDTO matchDTO) {
         User user = testUserSaveAPI();
-        MatchResultDTO matchResultDTO = new MatchResultDTO(user.getId(), true);
+        MatchResultDTO matchResultDTO = new MatchResultDTO(user.getId(), true, matchDTO.getId());
         matchResultController.createMatchResult(matchResultDTO);
         List<MatchResult> result = Lists.newArrayList(matchResultController.getAllMatchResults());
         assert  result.size()==1;

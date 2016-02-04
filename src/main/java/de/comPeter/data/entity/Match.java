@@ -37,12 +37,6 @@ public class Match extends AbstractEntity {
     @NonNull
     private Location location;
 
-    @Getter
-    @Setter
-    @OneToMany
-    @NonNull
-    private List<MatchResult> matchResults;
-
     protected Match() {
     }
 

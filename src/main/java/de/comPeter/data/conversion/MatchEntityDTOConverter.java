@@ -38,10 +38,7 @@ public class MatchEntityDTOConverter extends EntityDTOConverter<Match, MatchDTO>
         final Platform platform = platformRepository.findOne(matchDTO.getPlatform());
         final Location location = locationRepository.findOne(matchDTO.getLocation());
         final List<MatchResult> matchResults = new ArrayList<>();
-        matchDTO.getMatchResults().forEach(id -> {
-            matchResults.add(matchResultRepository.findById(id));
-        });
-        final Match match = new Match(game, platform, location, matchResults);
+        final Match match = new Match(game, platform, location);
         transferIdFromDtoToEntity(matchDTO, match);
         return match;
     }
@@ -49,9 +46,6 @@ public class MatchEntityDTOConverter extends EntityDTOConverter<Match, MatchDTO>
     @Override
     public MatchDTO entityToDto(final Match entity) {
         List<Long> matchResults = new ArrayList<>();
-        entity.getMatchResults().forEach(e -> {
-            matchResults.add(e.getId());
-        });
-        return new MatchDTO(entity.getId(), entity.getGame().getId(), entity.getPlatform().getId(), entity.getLocation().getId(), matchResults);
+        return new MatchDTO(entity.getId(), entity.getGame().getId(), entity.getPlatform().getId(), entity.getLocation().getId());
     }
 }

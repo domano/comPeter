@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by domano on 30.01.16.
  */
+@Repository
 public interface MatchRepository extends CrudRepository<Match, Long> {
 }
