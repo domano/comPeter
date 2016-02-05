@@ -1,10 +1,8 @@
 package de.comPeter.data.entity;
 
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.Tolerate;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -14,29 +12,24 @@ import java.util.List;
 /**
  * Created by domano on 30.01.16.
  */
+@EqualsAndHashCode(callSuper = true)
 @Entity
-
-@RequiredArgsConstructor
+@Data
 public class Match extends AbstractEntity {
 
-    @Getter
-    @Setter
     @OneToOne
     @NonNull
     private Game game;
 
-    @Getter
-    @Setter
     @OneToOne
     @NonNull
     private Platform platform;
 
-    @Getter
-    @Setter
     @OneToOne
     @NonNull
     private Location location;
 
+    @Tolerate
     protected Match() {
     }
 

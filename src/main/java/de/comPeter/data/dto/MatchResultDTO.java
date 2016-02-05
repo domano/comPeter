@@ -1,26 +1,24 @@
 package de.comPeter.data.dto;
 
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import lombok.experimental.Tolerate;
 
 /**
  * Created by domano on 30.01.16.
  */
 
+@EqualsAndHashCode(callSuper = true)
+@Data
 @RequiredArgsConstructor
 public class MatchResultDTO extends AbstractDTO {
 
-    @Getter
     @NonNull
     private final Long user;
 
-    @Getter
     @NonNull
     private final Boolean win;
 
-    @Getter
     @NonNull
     private final Long match;
 
@@ -28,4 +26,5 @@ public class MatchResultDTO extends AbstractDTO {
         this(user, win, match);
         this.id = id;
     }
+
 }

@@ -1,10 +1,8 @@
 package de.comPeter.data.entity;
 
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.Tolerate;
 
 import javax.persistence.Entity;
 
@@ -12,21 +10,18 @@ import javax.persistence.Entity;
 /**
  * Created by domano on 30.01.16.
  */
+@EqualsAndHashCode(callSuper = true)
 @Entity
-
-@RequiredArgsConstructor
+@Data
 public class User extends AbstractEntity {
 
-    @Getter
-    @Setter
     @NonNull
     private String firstName;
 
-    @Getter
-    @Setter
     @NonNull
     private String lastName;
 
+    @Tolerate
     protected User() {
 
     }
