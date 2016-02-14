@@ -29,17 +29,17 @@ public class UserController {
         this.converter = converter;
     }
 
-    @RequestMapping(path = "/User/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/user/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createUser(@RequestParam final UserDTO UserDTO) {
         userRepository.save(converter.dtoToEntity(UserDTO));
     }
 
-    @RequestMapping(path = "/User/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
     public User getUser(@PathParam("id") final Long id) {
         return userRepository.findOne(id);
     }
 
-    @RequestMapping(path = "/User/", method = RequestMethod.GET)
+    @RequestMapping(path = "/user/", method = RequestMethod.GET)
     public Iterable<User> getAllUsers() {
         return userRepository.findAll();
     }

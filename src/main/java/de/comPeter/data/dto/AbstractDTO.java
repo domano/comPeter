@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * Created by domano on 02.02.16.
  */
-public class AbstractDTO {
+public abstract class AbstractDTO {
     @Getter
     protected Long id;
 
